@@ -46,22 +46,35 @@ export function Ui()
                         <Tab title="Contact Details">
                             <Formik
                                 initialValues={{name:'',email:'',phone:''}}
-                                onSubmit={(values) => {console.log(values)}}
-                                >
-                                    <Form>
-                                        <Field name="name" placeholder="Name" component={TextInput}/>
-                                        <Field name="email" placeholder="Email" component={TextInput}/>
-                                        <Field name="phone" placeholder="Phone" component={TextInput}/>
-                                        <Button type="submit" label="Submit"/>
+                                onSubmit={(values, actions) => {
+                                    console.log('Form submitted:', values);
+                                    actions.setSubmitting(false);
+                                }}
+                            >
+                                {({ handleSubmit }) => (
+                                    <Form onSubmit={handleSubmit}>
+                                        <Box gap="medium" pad="small">
+                                            <FormField name="name" label="Name">
+                                                <Field name="name" component={TextInput} />
+                                            </FormField>
+                                            <FormField name="email" label="Email">
+                                                <Field name="email" component={TextInput} />
+                                            </FormField>
+                                            <FormField name="phone" label="Phone">
+                                                <Field name="phone" component={TextInput} />
+                                            </FormField>
+                                            <Button type="submit" primary label="Submit" />
+                                        </Box>
                                     </Form>
-                                </Formik>
+                                )}
+                            </Formik>
                                 
                             </Tab>
                         <Tab title="about me">
                             <Box justify="start" gap={'medium'}>
                                 <Heading level={2}>About me</Heading>
                                 <Paragraph>
-                                    I am a software developer with 5 years of experience in web development.
+                                    I am a software developer with 1 years of experience in web development.
                                 </Paragraph>
                             </Box>
                             </Tab>
