@@ -1,3 +1,4 @@
+import { Field, Formik, Form } from "formik";
 import { Grid, Box, Nav, Anchor, Sidebar, Button, Heading, Calendar, Chart, Paragraph, Tabs, Tab, FormField, TextInput } from "grommet";
 import * as Icons from "grommet-icons";
 
@@ -43,16 +44,18 @@ export function Ui()
                 <Box fill gridArea="main" background={'light-1'} pad={'medium'} gap={'medium'}>
                     <Tabs justify="start" gap={'medium'}>
                         <Tab title="Contact Details">
-                            <Box justify="start" gap={'medium'}>
-                                <Heading level={2}>Personal Details</Heading>
-                                <FormField label="Name" name="name" required>
-                                    <TextInput name="name" placeholder="John..." />
-                                </FormField>
-                                <FormField label="Mobile" name="mobile" required>
-                                    <TextInput name="name" placeholder="+91 XXXXXXXX" />
-                                </FormField>
-                                <Button label="Submit" />
-                            </Box>
+                            <Formik
+                                initialValues={{name:'',email:'',phone:''}}
+                                onSubmit={(values) => {console.log(values)}}
+                                >
+                                    <Form>
+                                        <Field name="name" placeholder="Name" component={TextInput}/>
+                                        <Field name="email" placeholder="Email" component={TextInput}/>
+                                        <Field name="phone" placeholder="Phone" component={TextInput}/>
+                                        <Button type="submit" label="Submit"/>
+                                    </Form>
+                                </Formik>
+                                
                             </Tab>
                         <Tab title="about me">
                             <Box justify="start" gap={'medium'}>
