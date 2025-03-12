@@ -42,7 +42,7 @@ export function Ui()
                 </Box>
                 <Box fill gridArea="main" background={'light-1'} pad={'medium'} gap={'medium'}>
                     <Tabs justify="start" gap={'medium'}>
-                        <Tab title="Tab 1">
+                        <Tab title="Contact Details">
                             <Box justify="start" gap={'medium'}>
                                 <Heading level={2}>Personal Details</Heading>
                                 <FormField label="Name" name="name" required>
@@ -54,8 +54,13 @@ export function Ui()
                                 <Button label="Submit" />
                             </Box>
                             </Tab>
-                        <Tab title="Tab 2">
-                            yash
+                        <Tab title="about me">
+                            <Box justify="start" gap={'medium'}>
+                                <Heading level={2}>About me</Heading>
+                                <Paragraph>
+                                    I am a software developer with 5 years of experience in web development.
+                                </Paragraph>
+                            </Box>
                             </Tab>
                     </Tabs>
                 </Box>
